@@ -1,6 +1,19 @@
-var myApp = angular
-  .module("myModule", [])
-  .controller("MainController", function ($scope) {
+var myApp = angular.module("myModule", ["ngRoute"])
+.config(function($routeProvider) {
+  $routeProvider
+    .when("/", {
+      templateUrl: "index.html",
+      controller: "MainController"
+    })
+    .when("/table", {
+      templateUrl: "table.html",
+      controller: "MainController"
+    })
+    .otherwise({
+      redirectTo: "/"
+    });
+})
+  .controller("MainController", function ($scope, $location) {
     $scope.employees = [];
     $scope.employee = {};
     $scope.editing = false;
@@ -18,7 +31,6 @@ var myApp = angular
             return; 
         }
 
-
         if ($scope.editing) {
             var index = findEmployeeIndex($scope.employee.id);
             if (index !== -1) {
@@ -30,12 +42,14 @@ var myApp = angular
             $scope.employees.push(angular.copy($scope.employee));
             $scope.cancelForm(); 
         }
+        $location.path("/table");
     };
 
     $scope.editEmployee = function(employee) {
         $scope.employee = angular.copy(employee); 
         $scope.editing = true;
         $scope.formVisible = true;
+        $location.path("/");
     };
 
     $scope.deleteEmployee = function(employee) {
