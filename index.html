@@ -85,17 +85,20 @@
         //     alert("Window load");
         // });
 
-        $(document).ready(function(){
-          $('table tr').each(function(){
-            alert($(this).html());
-          });
+       
+          // $('table tr').each(function(){
+          //   alert($(this).html());
+          // });
          // $('input').css('background-color','red');
+
+         $(document).ready(function(){
             $("h1").on('click', function () {
               $("h1").attr("style","color:red ; text-align:right");
               $("#qwe").append("<p>Hello</p>").attr("style","color:red ; text-align:right");
               
             });
         });
+        
         // window.onload = function(){
         //     alert("Window load function");
         // }
