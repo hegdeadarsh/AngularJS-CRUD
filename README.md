@@ -1,1 +1,1 @@
-Frontend webpage to perform CRUD using AngularJS and JQuery.
+** Employee Details - Frontend webpage to perform CRUD operations using AngularJS and JQuery.
