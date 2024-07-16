@@ -1,0 +1,28 @@
+<div ng-controller="MainController">
+    <table>
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Gender</th>
+          <th>Position</th>
+          <th>Salary</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="employee in employees">
+          <td>{{ employee.firstName }}</td>
+          <td>{{ employee.lastName }}</td>
+          <td>{{ employee.gender }}</td>
+          <td>{{ employee.position }}</td>
+          <td>{{ employee.salary }}</td>
+          <td>
+            <button ng-click="editEmployee(employee)">Edit</button>
+            <button ng-click="deleteEmployee(employee)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

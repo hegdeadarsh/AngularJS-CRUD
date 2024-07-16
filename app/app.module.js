@@ -1,9 +1,23 @@
-var myApp = angular.module("myModule", [])
-  .controller("MainController", function ($scope) {
+var myApp = angular.module("myModule", ["ngRoute"])
+.config(function ($routeProvider){
+    $routeProvider
+    .when("/",{
+        templateUrl : "form.html",
+        controller : "MainController"
+    })
+    .when("/table",{
+        templateUrl : "table.html",
+        controller : "MainController"
+    })
+    .otherwise({
+        redirectTo: "/"
+    });
+})
+  .controller("MainController", function ($scope, $location) {
     $scope.employees = [];
     $scope.employee = {};
     $scope.editing = false;
-    $scope.formVisible = true;
+    $scope.formVisible = false;
 
     $scope.showForm = function() {
         $scope.formVisible = true;
@@ -27,13 +41,18 @@ var myApp = angular.module("myModule", [])
             $scope.employee.id = generateId();
             $scope.employees.push(angular.copy($scope.employee));
             $scope.cancelForm(); 
+            
         }
+  
+        $location.path("/table");
+        console.log($scope.employees);
     };
 
     $scope.editEmployee = function(employee) {
         $scope.employee = angular.copy(employee); 
         $scope.editing = true;
         $scope.formVisible = true;
+        //$location.path("/");
     };
 
     $scope.deleteEmployee = function(employee) {

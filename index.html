@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="shortcut icon" href="#">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
     <script src="app/app.module.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <style>
@@ -73,92 +75,9 @@
     
   </head>
   <body ng-app="myModule">
-    <div id="qwe"></div>
-    <div id="asd"></div>
-<script type="text/javascript">
-        // $(document).ready(function(){
-        //     alert("DOM ready");
-        // });
 
-        
-        // $(window).on('load',function(){
-        //     alert("Window load");
-        // });
-
-       
-          // $('table tr').each(function(){
-          //   alert($(this).html());
-          // });
-         // $('input').css('background-color','red');
-
-         $(document).ready(function(){
-            $("h1").on('click', function () {
-              $("h1").attr("style","color:red ; text-align:right");
-              $("#qwe").append("<p>Hello</p>").attr("style","color:red ; text-align:right");
-              
-            });
-        });
-        
-        // window.onload = function(){
-        //     alert("Window load function");
-        // }
-    </script>
-    
     <h1 style="text-align: center">Employee Details</h1>
+    <div ng-view></div>
     
-    <div ng-controller="MainController">
-      <form ng-submit="submitForm()" ng-show="formVisible" name="employeeForm">
-        <label>First Name:</label>
-        <input type="text" ng-model="employee.firstName" required /><br />
-        <label>Last Name:</label>
-        <input type="text" ng-model="employee.lastName" required /><br />
-        <label>Gender:</label>
-        <input type="radio" ng-model="employee.gender" value="Male" /> Male
-        <input type="radio" ng-model="employee.gender" value="Female" /> Female
-        <br /><br />
-        <span class="error" ng-show="!employee.gender && formSubmitted"
-          >Please select a gender.</span
-        ><br />
-        <label>Position:</label>
-        <input type="text" ng-model="employee.position" required /><br />
-        <label>Salary:</label>
-        <input type="number" ng-model="employee.salary" required /><br />
-        <button type="submit" ng-show="!editing">Add Employee</button>
-        <button type="submit" ng-show="editing">Update Employee</button>
-        <button type="button" ng-click="cancelForm()">Cancel</button>
-      </form>
-
-      <button type="button" ng-click="showForm()">Add New Employee</button>
-
-      <table>
-        <thead>
-          <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Gender</th>
-            <th>Position</th>
-            <th>Salary</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="employee in employees">
-            <td>{{employee.firstName}}</td>
-            <td>{{employee.lastName}}</td>
-            <td>{{employee.gender}}</td>
-            <td>{{employee.position}}</td>
-            <td>{{employee.salary}}</td>
-            <td>
-              <button ng-click="editEmployee(employee)">Edit</button>
-              <button
-                style="background-color: #f44336"
-                ng-click="deleteEmployee(employee)">
-                Delete
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
   </body>
 </html>
