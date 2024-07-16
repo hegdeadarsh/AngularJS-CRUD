@@ -6,23 +6,23 @@ var myApp = angular
         templateUrl: "form.html",
         controller: "MainController",
       })
-      .when("/table", {
-        templateUrl: "table.html",
-        controller: "MainController",
-      })
       .otherwise({
         redirectTo: "/",
       });
-  })
+ })
   .controller("MainController", function ($scope, $location) {
     $scope.employees = [];
     $scope.employee = {};
     $scope.editing = false;
     $scope.formVisible = false;
+    $scope.formView = true;
+    $scope.tableView = false;
 
     $scope.showForm = function () {
       $scope.formVisible = true;
+      $scope.formView = true;
       $scope.editing = false;
+      $scope.tableView = false;
       $scope.employee = {};
     };
 
@@ -37,22 +37,28 @@ var myApp = angular
         if (index !== -1) {
           $scope.employees[index] = angular.copy($scope.employee);
           $scope.cancelForm();
+         
         }
       } else {
         $scope.employee.id = generateId();
         $scope.employees.push(angular.copy($scope.employee));
         $scope.cancelForm();
+        
       }
-
-      $location.path("/table");
+      $scope.tableView = true;
+      $scope.formView = false;
       console.log($scope.employees);
     };
+
+
 
     $scope.editEmployee = function (employee) {
       $scope.employee = angular.copy(employee);
       $scope.editing = true;
       $scope.formVisible = true;
-      //$location.path("/");
+      $scope.formView = true;
+      $scope.tableView = false;
+      $location.path("/");
     };
 
     $scope.deleteEmployee = function (employee) {
@@ -66,6 +72,7 @@ var myApp = angular
       $scope.employee = {};
       $scope.editing = false;
       $scope.formVisible = true;
+      $scope.formView = true;
     };
 
     function generateId() {

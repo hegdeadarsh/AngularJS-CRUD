@@ -1,4 +1,5 @@
 <div ng-controller="MainController">
+<div ng-show="formView">
     <form ng-submit="submitForm()" ng-show="formVisible" name="employeeForm">
       <label>First Name:</label>
       <input type="text" ng-model="employee.firstName" required /><br />
@@ -19,7 +20,33 @@
       <button type="submit" ng-show="editing">Update Employee</button>
       <button type="button" ng-click="cancelForm()">Cancel</button>
     </form>
-
-    <button type="button" ng-click="showForm()">Add New Employee</button>
-
+</div>
+<button type="button" ng-click="showForm()">Add New Employee</button>
+<div ng-show="tableView">
+    <table>
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Gender</th>
+          <th>Position</th>
+          <th>Salary</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="employee in employees">
+          <td>{{ employee.firstName }}</td>
+          <td>{{ employee.lastName }}</td>
+          <td>{{ employee.gender }}</td>
+          <td>{{ employee.position }}</td>
+          <td>{{ employee.salary }}</td>
+          <td>
+            <button ng-click="editEmployee(employee)">Edit</button>
+            <button style="background-color: red;" ng-click="deleteEmployee(employee)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+</div>
