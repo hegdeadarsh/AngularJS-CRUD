@@ -1,19 +1,5 @@
-var myApp = angular.module("myModule", ["ngRoute"])
-.config(function($routeProvider) {
-  $routeProvider
-    .when("/", {
-      templateUrl: "index.html",
-      controller: "MainController"
-    })
-    .when("/table", {
-      templateUrl: "table.html",
-      controller: "MainController"
-    })
-    .otherwise({
-      redirectTo: "/"
-    });
-})
-  .controller("MainController", function ($scope, $location) {
+var myApp = angular.module("myModule", [])
+  .controller("MainController", function ($scope) {
     $scope.employees = [];
     $scope.employee = {};
     $scope.editing = false;
@@ -42,14 +28,12 @@ var myApp = angular.module("myModule", ["ngRoute"])
             $scope.employees.push(angular.copy($scope.employee));
             $scope.cancelForm(); 
         }
-        $location.path("/table");
     };
 
     $scope.editEmployee = function(employee) {
         $scope.employee = angular.copy(employee); 
         $scope.editing = true;
         $scope.formVisible = true;
-        $location.path("/");
     };
 
     $scope.deleteEmployee = function(employee) {

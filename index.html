@@ -2,7 +2,6 @@
 <html>
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
     <script src="app/app.module.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <style>
@@ -101,14 +100,7 @@
         //     alert("Window load function");
         // }
     </script>
-    <script type="text/javascript">
-        // $(document).ready(function(){
-        // $("h1").click(function () {
-        //   alert("The header will hide now!");
-        //   $(this).hide();
-        // });
-    //});
-    </script>
+    
     <h1 style="text-align: center">Employee Details</h1>
     
     <div ng-controller="MainController">
@@ -134,7 +126,7 @@
       </form>
 
       <button type="button" ng-click="showForm()">Add New Employee</button>
-<!-- 
+
       <table>
         <thead>
           <tr>
@@ -157,14 +149,13 @@
               <button ng-click="editEmployee(employee)">Edit</button>
               <button
                 style="background-color: #f44336"
-                ng-click="deleteEmployee(employee)"
-              >
+                ng-click="deleteEmployee(employee)">
                 Delete
               </button>
             </td>
           </tr>
         </tbody>
-      </table> -->
+      </table>
     </div>
   </body>
 </html>
