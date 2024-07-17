@@ -14,7 +14,7 @@ var myApp = angular
     $scope.employees = [];
     $scope.employee = {};
     $scope.editing = false;
-    $scope.formVisible = false;
+    $scope.formVisible = true;
     $scope.formView = true;
     $scope.tableView = false;
 
@@ -49,8 +49,6 @@ var myApp = angular
       $scope.formView = false;
       console.log($scope.employees);
     };
-
-
 
     $scope.editEmployee = function (employee) {
       $scope.employee = angular.copy(employee);
