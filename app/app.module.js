@@ -9,7 +9,7 @@ var myApp = angular
       .otherwise({
         redirectTo: "/",
       });
- })
+  })
   .controller("MainController", function ($scope, $location) {
     $scope.employees = [];
     $scope.employee = {};
@@ -37,13 +37,11 @@ var myApp = angular
         if (index !== -1) {
           $scope.employees[index] = angular.copy($scope.employee);
           $scope.cancelForm();
-         
         }
       } else {
         $scope.employee.id = generateId();
         $scope.employees.push(angular.copy($scope.employee));
         $scope.cancelForm();
-        
       }
       $scope.tableView = true;
       $scope.formView = false;
